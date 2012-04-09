@@ -1,0 +1,53 @@
+<!DOCTYPE html5>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>流しタイピング</title>
+  <script type="text/javascript" src="AIRAliases.js"></script>
+  <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="jquery.mobile-1.1.0-rc.2.js"></script>
+  <script type="text/javascript" src="jquery.easing.1.3.js"></script>
+  <link rel="stylesheet" href="jquery.mobile-1.1.0-rc.2.css" type="text/css" />
+  <link rel="stylesheet" href="default.css" type="text/css" />
+  <script type="text/javascript">
+    function trace(obj) {
+      if (typeof console != 'undefined') {
+        console.log(obj);
+      } else if (typeof air != 'undefined') {
+        air.trace(obj);
+      }
+    }
+  </script>
+  <script type="text/javascript" src="wakaSelector.js"></script>
+  <script type="text/javascript" src="nagashi.js"></script>
+</head>
+<body>
+<div data-role="page" id="pageTitle">
+  <div data-role="content" class="absolutePosition">
+    <div style='width:500'>
+      <h1 style='left:100; top:200;'>流しタイピング</h1>
+      <a style='left:100; top:300;' data-transition="slide" href="#pagePlay">START</a>
+      <a style='left:100; top:400;' data-transition="slide" data-direction="reverse" href="#pageSetting">SETTING</a>
+    </div>
+  </div>
+</div>
+<div data-role="page" id="pageSetting">
+  <div data-role="content" class="absolutePosition">
+    <div style='width:500'>
+      <h1 style='left:100; top:200;'>流しタイピング - 設定</h1>
+      <a style='left:100; top:300;' data-transition="slide" href="#pageTitle">BACK</a>
+    </div>
+  </div>
+</div>
+<div data-role="page" id="pagePlay">
+  <div data-role="content" class="absolutePosition">
+    <div id="torifuda_space"></div>
+    <div class="torifuda_block" id='torifuda_block_base'>
+      <div class="torifuda_bg_img"></div>
+      <p class="kimari_text"></p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+

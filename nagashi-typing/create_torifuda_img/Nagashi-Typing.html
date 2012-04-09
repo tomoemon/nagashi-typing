@@ -1,0 +1,31 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>流しタイピング</title>
+  <script type="text/javascript" src="AIRAliases.js"></script>
+  <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="wakaSelector.js"></script>
+  <script type="text/javascript">
+    var i=0;
+    var selector = new WakaSelector();
+    function appLoad() {
+      next();
+      $('body').click(next);
+    }
+    function next() {
+      var simo = selector.get(i).simo;
+      console.log(i);
+      console.log(simo);
+      $('#simoText').text(simo);
+      i++;
+    }
+  </script>
+  <link rel="stylesheet" href="default.css" type="text/css" />
+</head>
+<body onLoad="appLoad()">
+<div class='torifuda_block'>
+  <img src='torifuda_bg_resize.png'>
+  <p id="simoText">わかころもてはつゆにぬれつつ</p>
+</div>
+</body>
+</html>

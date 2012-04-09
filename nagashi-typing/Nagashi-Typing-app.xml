@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://ns.adobe.com/air/application/1.0">
+    <id>biz.typer.air.NagashiTyping</id>
+    <version>0.1</version>
+    <filename>Nagashi-Typing</filename>
+    <name>NagashiTyping</name>
+    <copyright>copyright (c) 2012 tomoemon</copyright>
+    <description>競技かるた練習ソフト</description>
+    <initialWindow>
+        <content>package/Nagashi-Typing.html</content>
+        <visible>true</visible>
+        <minimizable>true</minimizable>
+        <maximizable>false</maximizable>
+        <resizable>false</resizable>
+        <width>800</width>
+        <height>600</height>
+    </initialWindow>
+</application>

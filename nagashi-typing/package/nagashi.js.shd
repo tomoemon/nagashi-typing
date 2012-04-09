@@ -1,0 +1,81 @@
+## coffee -csb
+# 流しタイピングメインスクリプト
+
+$ ->
+  wakaPrintIndex = 0
+  selector = new WakaSelector()
+  torifudaSpace = $('#torifuda_space')
+  currentView = null
+
+  appLoad = ->
+    currentView = new TorifudaView(selector.get(16))
+    currentView.show(torifudaSpace)
+    currentView.showKimariji(false)
+    $('body').click(next)
+
+  next = ->
+    if currentView.isShowKimariji
+      currentView.remove()
+      currentView = new TorifudaView(selector.get(wakaPrintIndex++))
+      currentView.show(torifudaSpace)
+    else
+      currentView.showKimariji(false)
+
+  class TorifudaView
+    wakaImages = []
+    for i in [0..99]
+      image = new Image()
+      image.src = 'img/torifuda/torifuda_' + i + '.png'
+      wakaImages.push(image)
+    image = new Image()
+    image.src = 'torifuda_bg_resize.png'
+    wakaImages.push(image)
+
+    constructor: (waka) ->
+      @waka = waka
+      @node = @create_torifuda_node(waka.index, waka.getKimariji())
+      @isShowKimariji = false
+      @textNode = @node.children('p')
+
+    show: (parentNode) ->
+      @node.insertBefore(parentNode)
+      @node.css('display': 'block')
+      @node.css('zIndex': 1000-@waka.index)
+
+    remove: (afterFunction) ->
+      @node.animate({
+        left: '+=300',
+        top: '-=500'
+      }, 500, "easeOutQuart", => @node.remove())
+
+    showKimariji: (isSucceeded) ->
+      @isShowKimariji = true
+      colorStyle = if isSucceeded then 'kimari_text_succeeded' else 'kimari_text_failed'
+      kimariji = @waka.getKimariji()
+
+      @textNode.html('')
+      if kimariji.length == 6
+        splitted = kimariji.split("").map((e) -> "　"+e)
+        splitted[2] = splitted[2].replace("　", splitted[5][1])
+        splitted.pop()
+        @textNode.attr('class', 'kimari_text kimari5')
+      else
+        splitted = kimariji.split('')
+
+      @textNode.css('display', 'block')
+      @textNode.attr('class', "kimari_text kimari#{splitted.length} #{colorStyle}")
+      @textNode.html(splitted.join("<br />"))
+
+    create_torifuda_node: (index, kimariji) ->
+      torifuda = $('#torifuda_block_base').clone()
+      torifuda.attr('id', 'waka_' + index)
+      torifuda.children('div').css('backgroundImage', "url(#{wakaImages[index].src})")
+
+      return torifuda
+
+  appLoad()
+
+# vim: set ft=coffee :
+
+
+

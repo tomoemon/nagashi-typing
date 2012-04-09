@@ -1,0 +1,31 @@
+
+* {
+  position: absolute;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+.torifuda_block {
+  left: 0px;
+  top: 0px;
+  width: 330px;
+  height: 464px;
+}
+
+.torifuda_block img {
+  width: 100%;
+  height: 100%;
+}
+
+.torifuda_block p {
+  position: absolute;
+  line-height: 1.1em;
+  top: 28px;
+  left: -32px;
+  font-family: "@HGS行書体";
+  font-size: 60pt;
+  -webkit-writing-mode: vertical-rl;
+  writing-mode: tb-rl;
+  width: 100%;
+  height: 100%;
+}
